@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppstoreOutlined, ManOutlined, SettingOutlined ,MenuFoldOutlined,MenuUnfoldOutlined } from '@ant-design/icons';
+import { BookOutlined,PrinterOutlined,SaveOutlined, ManOutlined, SettingOutlined ,MenuFoldOutlined,MenuUnfoldOutlined } from '@ant-design/icons';
 import { Button, MenuProps, MenuTheme } from 'antd';
 import { Menu, Switch } from 'antd';
 
@@ -27,7 +27,7 @@ const items: MenuItem[] = [
     getItem('لیست دانشجویان', '2'),
   ]),
 
-  getItem('دروس', 'sub2', <AppstoreOutlined />, [
+  getItem('دروس', 'sub2', <BookOutlined />, [
     getItem('ایجاد درس جدید', '5'),
     getItem('لیست دروس', '6'),
   ]),
@@ -37,8 +37,8 @@ const items: MenuItem[] = [
     
    
   ]),
-    getItem('ثبت نمره نهایی', '13'),
-    getItem(' صدور کارنامه نهایی', '14'),
+    getItem('ثبت نمره نهایی', '13',<SaveOutlined />),
+    getItem(' صدور کارنامه نهایی', '14',<PrinterOutlined />),
    
   
 ];
@@ -72,7 +72,7 @@ const Dashbord: React.FC = () => {
         checkedChildren="Dark"
         unCheckedChildren="Light"
       />
-      <Menu className='Menu '
+      <Menu className='Menu'
       
       theme={theme}
       onClick={onClick}
