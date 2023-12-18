@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BookOutlined,PrinterOutlined,SaveOutlined, ManOutlined, SettingOutlined ,MenuFoldOutlined,MenuUnfoldOutlined } from '@ant-design/icons';
 import { Button, MenuProps, MenuTheme } from 'antd';
 import { Menu, Switch } from 'antd';
+import ListStudents from './ListStudents';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -11,6 +12,7 @@ function getItem(
   icon?: React.ReactNode,
   children?: MenuItem[],
   type?: 'group',
+  onClick?:()=>void
 ): MenuItem {
   return {
     key,
@@ -18,6 +20,7 @@ function getItem(
     children,
     label,
     type,
+    onClick
   } as MenuItem;
 }
 
@@ -28,8 +31,8 @@ const items: MenuItem[] = [
   ]),
 
   getItem('دروس', 'sub2', <BookOutlined />, [
-    getItem('ایجاد درس جدید', '5'),
-    getItem('لیست دروس', '6'),
+    getItem('ایجاد درس جدید', '3'),
+    getItem('لیست دروس', '4'),
   ]),
 
  
@@ -37,8 +40,8 @@ const items: MenuItem[] = [
     
    
   ]),
-    getItem('ثبت نمره نهایی', '13',<SaveOutlined />),
-    getItem(' صدور کارنامه نهایی', '14',<PrinterOutlined />),
+    getItem('ثبت نمره نهایی', '5',<SaveOutlined />),
+    getItem(' صدور کارنامه نهایی', '6',<PrinterOutlined />),
    
   
 ];
@@ -47,6 +50,7 @@ const Dashbord: React.FC = () => {
   const [theme, setTheme] = useState<MenuTheme>('dark');
   const [current, setCurrent] = useState('1');
   const [collapsed, setCollapsed] = useState(false);
+  const [showListStudents, setShowListStudents] = useState(false);
   
 
   const changeTheme = (value: boolean) => {
@@ -59,13 +63,44 @@ const Dashbord: React.FC = () => {
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click ', e);
     setCurrent(e.key);
-  };
+    if (e.key === '1') {
+      
+    }
+    if (e.key === '2') {
+      setShowListStudents(true);
+       
+    }
+    else setShowListStudents(false)
+    if (e.key === '3') {
+      // اجرای کد مرتبط با ایجاد درس جدید
+      // مثلاً یک تابع یا رویداد دیگر را اجرا کنید
+      console.log('Creating a new course...');
+    }
+    if (e.key === '4') {
+      // اجرای کد مرتبط با ایجاد درس جدید
+      // مثلاً یک تابع یا رویداد دیگر را اجرا کنید
+      console.log('Creating a new course...');
+    }
+    if (e.key === '5') {
+      // اجرای کد مرتبط با ایجاد درس جدید
+      // مثلاً یک تابع یا رویداد دیگر را اجرا کنید
+      console.log('Creating a new course...');
+    }
+    if (e.key === '6') {
+      // اجرای کد مرتبط با ایجاد درس جدید
+      // مثلاً یک تابع یا رویداد دیگر را اجرا کنید
+      console.log('Creating a new course...');
+    }
 
+  };
+ 
   return (
     <div >
         <Button className='MenuBar' type="primary" onClick={toggleCollapsed} style={{ marginBottom: 16 ,width:256}}>
     {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
   </Button>
+  
+  {showListStudents && <ListStudents />}
   <Switch className='dark '
         checked={theme === 'dark'}
         onChange={changeTheme}

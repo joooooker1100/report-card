@@ -1,12 +1,13 @@
-import React from 'react';
 import FrontPage from './FrontPage';
 import Dashbord from './Menu';
+
 
 const App = () => {
   return (
     <div>
       <FrontPage />
       <Dashbord />
+      
     </div>
   );
 }

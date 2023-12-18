@@ -26,13 +26,17 @@
   position: absolute;
   right: 0;
   top: 30px;
+  
+  
 
 }
 .dark {
-  align-items: center;
+
   justify-content: flex-end; 
   position: absolute;
+  
   left: 0;
+  top: 0;
 
 }
 .MenuBar {
@@ -41,6 +45,19 @@
   position: absolute;
   right: 0;
 
+}
+.TableListStusents {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70vw; /* تعیین عرض به عنوان 70 درصد از عرض صفحه */
+  max-width: 800px; /* حداکثر عرض مجاز */
+  height: 70vh; /* تعیین ارتفاع به عنوان 70 درصد از ارتفاع صفحه */
+  max-height: 580px; /* حداکثر ارتفاع مجاز */
+  background-color: #f0f0f0; /* یک رنگ پس زمینه به عنوان مثال */
+  padding: 20px; /* فاصله داخلی برای Table */
+  box-sizing: border-box; /* جلوگیری از افزایش اندازه به علت padding */
 }
 
 
