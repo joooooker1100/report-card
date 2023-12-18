@@ -5,17 +5,17 @@ import type { ColumnsType } from 'antd/es/table';
 interface DataType {
   key: React.Key;
   name: string;
-  code: number;
+  ostad: string;
 }
 
 const columns: ColumnsType<DataType> = [
     {
-        title: 'نام و نام خانوادگی',
+        title: 'نام درس',
         dataIndex: 'name',
       },
       {
-        title: 'کد دانشجویی',
-        dataIndex: 'code',
+        title: 'نام استاد ',
+        dataIndex: 'ostad',
       }
 ];
 
@@ -23,80 +23,34 @@ const data: DataType[] = [
     {
       key: '1',
       name: 'John Brown',
-      code: 32,
+      ostad:"kargar"
       
     },
     {
       key: '2',
       name: 'Jim Green',
-      code: 42,
+      ostad:"kargar"
       
     },
     {
       key: '3',
       name: 'Joe Black',
-      code: 32,
+      ostad:"kargar"
       
     },
     {
       key: '4',
       name: 'Disabled User',
-      code: 99,
+      ostad:"kargar"
       
     },
     {
       key: '5',
       name: 'hgj',
-      code: 55555555555555555,
-      
-    }, {
-      key: '6',
-      name: 'hgj',
-      code: 55555555555555555,
-      
-    }, {
-      key: '7',
-      name: 'hgj',
-      code: 55555555555555555,
-      
-    }, {
-      key: '8',
-      name: 'hgj',
-      code: 55555555555555555,
-      
-    }, {
-      key: '9',
-      name: 'hgj',
-      code: 55555555555555555,
-      
-    }, {
-      key: '10',
-      name: 'hgj',
-      code: 55555555555555555,
-      
-    }, {
-      key: '11',
-      name: 'hgj',
-      code: 55555555555555555,
-      
-    }, {
-      key: '12',
-      name: 'hgj',
-      code: 55555555555555555,
-      
-    }, {
-      key: '13',
-      name: 'hgj',
-      code: 55555555555555555,
-      
-    }, {
-      key: '14',
-      name: 'hgj',
-      code: 55555555555555555,
-      
-    },
+      ostad:"kargar"
+    }
   ];
-const ListStudents: React.FC = () => {
+const ListLessons: React.FC = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [loading, setLoading] = useState(false);
   const [dataSource , setDataSource] = useState(data);
@@ -137,4 +91,4 @@ const ListStudents: React.FC = () => {
   );
 };
 
-export default ListStudents;
+export default ListLessons;

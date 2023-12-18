@@ -3,6 +3,9 @@ import { BookOutlined,PrinterOutlined,SaveOutlined, ManOutlined, SettingOutlined
 import { Button, MenuProps, MenuTheme } from 'antd';
 import { Menu, Switch } from 'antd';
 import ListStudents from './ListStudents';
+import CreateNewStudent from './CreateNewStudent';
+import CreateNewLesson from './CreateNewLesson';
+import ListLessons from './ListLessons';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -51,6 +54,9 @@ const Dashbord: React.FC = () => {
   const [current, setCurrent] = useState('1');
   const [collapsed, setCollapsed] = useState(false);
   const [showListStudents, setShowListStudents] = useState(false);
+  const [showCreateNewStudent , setCreateNewStudent] = useState(false);
+  const [showCreateNewLesson , setShowCreateNewLesson] = useState(false);
+  const [showListLessons,setShowListLessons] = useState(false);
   
 
   const changeTheme = (value: boolean) => {
@@ -64,23 +70,21 @@ const Dashbord: React.FC = () => {
     console.log('click ', e);
     setCurrent(e.key);
     if (e.key === '1') {
-      
+      setCreateNewStudent(true);
     }
+    else setCreateNewStudent(false)
     if (e.key === '2') {
       setShowListStudents(true);
-       
     }
     else setShowListStudents(false)
     if (e.key === '3') {
-      // اجرای کد مرتبط با ایجاد درس جدید
-      // مثلاً یک تابع یا رویداد دیگر را اجرا کنید
-      console.log('Creating a new course...');
+      setShowCreateNewLesson(true)
     }
+    else setShowCreateNewLesson(false)
     if (e.key === '4') {
-      // اجرای کد مرتبط با ایجاد درس جدید
-      // مثلاً یک تابع یا رویداد دیگر را اجرا کنید
-      console.log('Creating a new course...');
+      setShowListLessons(true)
     }
+    else setShowListLessons(false)
     if (e.key === '5') {
       // اجرای کد مرتبط با ایجاد درس جدید
       // مثلاً یک تابع یا رویداد دیگر را اجرا کنید
@@ -101,6 +105,9 @@ const Dashbord: React.FC = () => {
   </Button>
   
   {showListStudents && <ListStudents />}
+  {showCreateNewStudent && <CreateNewStudent />}
+  {showCreateNewLesson && <CreateNewLesson />}
+  {showListLessons && <ListLessons />}
   <Switch className='dark '
         checked={theme === 'dark'}
         onChange={changeTheme}
