@@ -3,13 +3,30 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import CreateNewStudent from './CreateNewStudent';
 
+export default function Kol() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<App />} />
+          <Route path="CreateNewStudent" element={<CreateNewStudent />} />
+          <Route path="ListStudents" element={<CreateNewStudent />} />
+          <Route path="CreateNewLesson" element={<CreateNewStudent />} />
+          <Route path="ListLessons" element={<CreateNewStudent />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-   <App />
+   <Kol />
   </React.StrictMode>
 );
 

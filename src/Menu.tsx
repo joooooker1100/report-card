@@ -6,6 +6,7 @@ import ListStudents from './ListStudents';
 import CreateNewStudent from './CreateNewStudent';
 import CreateNewLesson from './CreateNewLesson';
 import ListLessons from './ListLessons';
+import { Link } from "react-router-dom";
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -29,19 +30,17 @@ function getItem(
 
 const items: MenuItem[] = [
   getItem('دانشجویان', 'sub1', <ManOutlined />, [
-    getItem('ایجاد دانشجوی جدید', '1'),
-    getItem('لیست دانشجویان', '2'),
+    getItem('ایجاد دانشجوی جدید', '1',<Link to='CreateNewStudent'></Link>),
+    getItem('لیست دانشجویان', '2',<Link to='ListStudents'></Link>),
   ]),
 
   getItem('دروس', 'sub2', <BookOutlined />, [
-    getItem('ایجاد درس جدید', '3'),
-    getItem('لیست دروس', '4'),
+    getItem('ایجاد درس جدید', '3',<Link to='CreateNewLesson'></Link>),
+    getItem('لیست دروس', '4',<Link to='ListLessons'></Link>),
   ]),
 
  
   getItem('ارائه', 'sub3',<SettingOutlined />, [
-    
-   
   ]),
     getItem('ثبت نمره نهایی', '5',<SaveOutlined />),
     getItem(' صدور کارنامه نهایی', '6',<PrinterOutlined />),
@@ -69,33 +68,43 @@ const Dashbord: React.FC = () => {
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click ', e);
     setCurrent(e.key);
-    if (e.key === '1') {
-      setCreateNewStudent(true);
+  
+    switch (e.key) {
+      case '1':
+        setCreateNewStudent(prevValue => !prevValue);
+        setShowListStudents(false);
+        setShowCreateNewLesson(false);
+        setShowListLessons(false);
+        break;
+      case '2':
+        setShowListStudents(prevValue => !prevValue);
+        setCreateNewStudent(false);
+        setShowCreateNewLesson(false);
+        setShowListLessons(false);
+        break;
+      case '3':
+        setShowCreateNewLesson(prevValue => !prevValue);
+        setCreateNewStudent(false);
+        setShowListStudents(false);
+        setShowListLessons(false);
+        break;
+      case '4':
+        setShowListLessons(prevValue => !prevValue);
+        setCreateNewStudent(false);
+        setShowListStudents(false);
+        setShowCreateNewLesson(false);
+        break;
+      case '5':
+        // اجرای کد مرتبط با ثبت نمره نهایی
+        console.log('Entering final grade...');
+        break;
+      case '6':
+        // اجرای کد مرتبط با صدور کارنامه نهایی
+        console.log('Issuing final report card...');
+        break;
+      default:
+        break;
     }
-    else setCreateNewStudent(false)
-    if (e.key === '2') {
-      setShowListStudents(true);
-    }
-    else setShowListStudents(false)
-    if (e.key === '3') {
-      setShowCreateNewLesson(true)
-    }
-    else setShowCreateNewLesson(false)
-    if (e.key === '4') {
-      setShowListLessons(true)
-    }
-    else setShowListLessons(false)
-    if (e.key === '5') {
-      // اجرای کد مرتبط با ایجاد درس جدید
-      // مثلاً یک تابع یا رویداد دیگر را اجرا کنید
-      console.log('Creating a new course...');
-    }
-    if (e.key === '6') {
-      // اجرای کد مرتبط با ایجاد درس جدید
-      // مثلاً یک تابع یا رویداد دیگر را اجرا کنید
-      console.log('Creating a new course...');
-    }
-
   };
  
   return (
@@ -103,7 +112,6 @@ const Dashbord: React.FC = () => {
         <Button className='MenuBar' type="primary" onClick={toggleCollapsed} style={{ marginBottom: 16 ,width:256}}>
     {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
   </Button>
-  
   {showListStudents && <ListStudents />}
   {showCreateNewStudent && <CreateNewStudent />}
   {showCreateNewLesson && <CreateNewLesson />}
